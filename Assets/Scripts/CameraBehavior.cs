@@ -15,16 +15,19 @@ public class CameraFollow : MonoBehaviour
 
     void LateUpdate()
     {
-        // Only follow if player is to the right of the threshold
-        float cameraRightEdge = transform.position.x + rightThreshold;
-        if (player.position.x > cameraRightEdge)
+        if (player)
         {
-            float newCameraX = player.position.x - rightThreshold;
-            // Only move camera forward (never back)
-            if (newCameraX > lastCameraX)
+            // Only follow if player is to the right of the threshold
+            float cameraRightEdge = transform.position.x + rightThreshold;
+            if (player.position.x > cameraRightEdge)
             {
-                transform.position = new Vector3(newCameraX, transform.position.y, transform.position.z);
-                lastCameraX = newCameraX;
+                float newCameraX = player.position.x - rightThreshold;
+                // Only move camera forward (never back)
+                if (newCameraX > lastCameraX)
+                {
+                    transform.position = new Vector3(newCameraX, transform.position.y, transform.position.z);
+                    lastCameraX = newCameraX;
+                }
             }
         }
     }
