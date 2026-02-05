@@ -12,7 +12,7 @@ public class FireBreather : MonoBehaviour
     Transform player;
     float nextFireTime;
 
-    void Start()
+    void Awake()
     {
         player = GameObject.FindGameObjectWithTag("Player").transform;
     }

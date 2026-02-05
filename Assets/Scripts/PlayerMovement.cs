@@ -9,6 +9,8 @@ public class PlayerMovement : MonoBehaviour
     public Transform groundCheck;
     public float groundCheckRadius = 0.1f;
     public LayerMask groundLayer;
+    [SerializeField]
+    public GameObject playerBody;
 
     private Rigidbody2D rb;
     private bool isGrounded;
@@ -28,9 +30,9 @@ public class PlayerMovement : MonoBehaviour
 
         // Flip sprite
         if (moveInputX < 0)
-            spriteRenderer.flipX = true;
+            playerBody.transform.rotation = Quaternion.Euler(0, 180, 0);
         else if (moveInputX > 0)
-            spriteRenderer.flipX = false;
+            playerBody.transform.rotation = Quaternion.Euler(0, 0, 0);
 
         // Ground check
         isGrounded = Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, groundLayer);

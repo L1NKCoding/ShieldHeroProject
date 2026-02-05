@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Died : MonoBehaviour
 {
@@ -8,6 +9,7 @@ public class Died : MonoBehaviour
             {
             Destroy(other.gameObject);
             Debug.Log("You Lose");
+            SceneManager.LoadScene("Death_Screen");
         }
     }
 }

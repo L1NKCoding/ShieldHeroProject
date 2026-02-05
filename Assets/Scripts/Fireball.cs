@@ -22,7 +22,7 @@ public class Fireball : MonoBehaviour
             {
                 rb.linearVelocity = new Vector2(-rb.linearVelocity.x, rb.linearVelocity.y);
             }
-            gameObject.layer = LayerMask.NameToLayer("PlayerProjectile"); 
+            gameObject.layer = LayerMask.NameToLayer("Player Projectile"); 
         }
         // If a reflected fireball hits FireBreather, kill it
         else if (other.CompareTag("Enemy") && reflected)
