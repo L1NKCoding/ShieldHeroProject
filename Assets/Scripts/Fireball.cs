@@ -35,7 +35,7 @@ public class Fireball : MonoBehaviour
             Destroy(gameObject);
         }
         // If it hits ground or player, just destroy 
-        else if (other.CompareTag("Ground") || other.CompareTag("Player"))
+        else if (other.CompareTag("Wall") || other.CompareTag("Player"))
         {
             Destroy(gameObject);
         }
