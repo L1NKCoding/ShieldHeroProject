@@ -6253,6 +6253,9 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 8
   playerBody: {fileID: 897900210}
+  shieldObject: {fileID: 343018812}
+  normalSprite: {fileID: -912692074407893134, guid: 398156bc0d760bf48ad5ff94992295e7, type: 3}
+  shieldSprite: {fileID: 3586731712540798422, guid: dc8df73ea6338374db5a930b4809dff5, type: 3}
 --- !u!1 &1862593666
 GameObject:
   m_ObjectHideFlags: 0

@@ -11,15 +11,25 @@ public class PlayerMovement : MonoBehaviour
     public LayerMask groundLayer;
     [SerializeField]
     public GameObject playerBody;
+    public GameObject shieldObject;        // Assign your shield GameObject in Inspector
+    public Sprite normalSprite;            // Assign normal character sprite in Inspector
+    public Sprite shieldSprite;            // Assign shield-up character sprite in Inspector
 
     private Rigidbody2D rb;
     private bool isGrounded;
     private SpriteRenderer spriteRenderer;
+    private bool isShieldActive = false;
 
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        spriteRenderer = GetComponent<SpriteRenderer>();
+        spriteRenderer = playerBody.GetComponent<SpriteRenderer>();
+        
+        // Initialize shield as inactive
+        if (shieldObject != null)
+        {
+            shieldObject.SetActive(false);
+        }
     }
 
     void Update()
@@ -41,6 +51,56 @@ public class PlayerMovement : MonoBehaviour
         if (Input.GetButtonDown("Jump") && isGrounded)
         {
             rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce);
+        }
+
+        // Shield based on movement - active when NOT moving
+        if (moveInputX == 0)
+        {
+            ActivateShield();
+        }
+        else
+        {
+            DeactivateShield();
+        }
+    }
+
+    void ActivateShield()
+    {
+        if (!isShieldActive)
+        {
+            isShieldActive = true;
+            
+            // Enable shield GameObject
+            if (shieldObject != null)
+            {
+                shieldObject.SetActive(true);
+            }
+            
+            // Change sprite to shield version
+            if (spriteRenderer != null && shieldSprite != null)
+            {
+                spriteRenderer.sprite = shieldSprite;
+            }
+        }
+    }
+
+    void DeactivateShield()
+    {
+        if (isShieldActive)
+        {
+            isShieldActive = false;
+            
+            // Disable shield GameObject
+            if (shieldObject != null)
+            {
+                shieldObject.SetActive(false);
+            }
+            
+            // Change sprite back to normal
+            if (spriteRenderer != null && normalSprite != null)
+            {
+                spriteRenderer.sprite = normalSprite;
+            }
         }
     }
 }
