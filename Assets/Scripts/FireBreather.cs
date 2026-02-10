@@ -32,8 +32,8 @@ public class FireBreather : MonoBehaviour
 
     void Shoot()
     {
-        // Decide direction toward player (left or right)
-        int dir = player.position.x >= transform.position.x ? 1 : -1;
+        // Shoot in the direction the enemy is facing (based on localScale)
+        int dir = transform.localScale.x >= 0 ? -1 : 1;
 
         // Spawn fireball
         Transform spawnPoint = firePoint != null ? firePoint : transform;
