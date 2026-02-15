@@ -5,21 +5,40 @@ public class ScoreManager : MonoBehaviour
 {
     public static ScoreManager instance;
     public TextMeshProUGUI scoreText;
-    private int score = 0;
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    int score = 0;
+
+    void Awake()
     {
-        UpdateScore();
+        if (instance == null)
+        {
+            instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else
+        {
+            Destroy(gameObject);
+            return;
+        }
     }
 
-    public void AddPoint(int amount)
+    void Start()
+    {
+        UpdateScoreText();
+    }
+
+    public void AddScore(int amount)
     {
         score += amount;
-        UpdateScore();
+        UpdateScoreText();
     }
-    // Update is called once per frame
-    void UpdateScore()
+
+    void UpdateScoreText()
     {
-        scoreText.text = "Score: "+ score;
+        TextMeshProUGUI textUI =
+    GameObject.Find("ScoreText")?.GetComponent<TextMeshProUGUI>();
+    if (textUI != null)    {
+        textUI.text = "Score: " + score;
+        
+    }        
     }
 }

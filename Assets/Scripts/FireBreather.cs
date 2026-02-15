@@ -51,6 +51,12 @@ public class FireBreather : MonoBehaviour
     public void Die()
     {
         // TODO later trigger FireBreatherDead animation
-        Destroy(gameObject);
+        // give points
+        if (ScoreManager.instance != null)
+        {
+            ScoreManager.instance.AddScore(100); // 100 points per FireBreather
+        }
+
+    Destroy(gameObject);
     }
 }
