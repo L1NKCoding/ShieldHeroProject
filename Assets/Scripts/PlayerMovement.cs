@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 public class PlayerMovement : MonoBehaviour
 {
-    public float speed = 8f;
+    public float speed = GameSettings.PlayerSpeed; // Load speed from settings
     public float jumpForce = 20f;
     public Transform groundCheck;
     public float groundCheckRadius = 0.1f;
@@ -22,6 +22,7 @@ public class PlayerMovement : MonoBehaviour
 
     void Start()
     {
+        GameSettings.Load(); // Load settings on start
         rb = GetComponent<Rigidbody2D>();
         spriteRenderer = playerBody.GetComponent<SpriteRenderer>();
         
@@ -34,6 +35,8 @@ public class PlayerMovement : MonoBehaviour
 
     void Update()
     {
+        speed = GameSettings.PlayerSpeed; // Update speed from settings each frame
+
         float moveInputX = Input.GetAxisRaw("Horizontal");
         Vector2 move = new Vector2(moveInputX * speed, rb.linearVelocity.y);
         rb.linearVelocity = move;
