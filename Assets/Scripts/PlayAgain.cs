@@ -7,4 +7,16 @@ public class PlayAgain : MonoBehaviour
     {
         SceneManager.LoadScene("Level_1");
     }
+    public void ReplayLevel()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+    public void NextLevel()
+    {
+        SceneManager.LoadScene("Level_2");
+    }
+    public void MainMenu()
+    {
+        SceneManager.LoadScene("Main_Menu");
+    }
 }

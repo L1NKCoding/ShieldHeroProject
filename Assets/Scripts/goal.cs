@@ -9,6 +9,8 @@ public class goal : MonoBehaviour
         if (other.gameObject.CompareTag("Player"))
         {
             Debug.Log("You Win!");
+            // Store the current level index before loading win screen
+            PlayerPrefs.SetInt("CompletedLevel", SceneManager.GetActiveScene().buildIndex);
             SceneManager.LoadScene("Win_Screen");
         }
     }
