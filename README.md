@@ -1,3 +1,6 @@
+# Intro into game development 
+UTRGV Spring 2026 
+
 # Shield Hero Project 
 ------------------------------------------------------------------------------------
 A 2D side-scrolling platformer built in Unity.
@@ -20,7 +23,7 @@ The player must block or dodge incoming enemy projectiles and reach the goal lin
 
 ----------------------------------------------------------
 
-## Most Recent Game Updates <--------------------
+## The Most Recent Game Updates 
 
 ### Dynamic Scene Transfers
 Updated the play-again script to support dynamic scene loading instead of hardcoded scene names.
